@@ -1,0 +1,25 @@
+{
+  "name": "nova-chat-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobina1383tabari-beep/Nova-chat-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mobina1383tabari-beep/Nova-chat-server/issues"
+  },
+  "homepage": "https://github.com/mobina1383tabari-beep/Nova-chat-server#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "socket.io": "^4.8.1"
+  }
+}

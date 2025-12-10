@@ -17,7 +17,7 @@ io.use(socketAuth);
 SocketHandler(io);
 
 server.listen(process.env.Port || 3001, () => {
-    console.log(`سرور روی پورت ${process.env.PORT || 3001} اجرا شد`)
+    console.log(`server on port${process.env.PORT || 3001} run `)
 });
 
 

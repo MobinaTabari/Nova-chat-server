@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("اتصال به دیتابیس برقرار شد");
+    console.log("connect to dataBase");
   } catch (err) {
-    console.error(" خطا در اتصال به دیتابیس:", err.message);
+    console.error("Error to connect dataBase :", err.message);
     process.exit(1);
   }
 };

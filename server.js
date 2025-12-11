@@ -34,7 +34,6 @@ const MessageSchema = new mongoose.Schema({
 
 const Message = mongoose.model("Message", MessageSchema);
 
-// API برای گرفتن پیام‌های ذخیره‌شده
 app.get("/messages", async (req, res) => {
   const messages = await Message.find({});
   res.json(messages);

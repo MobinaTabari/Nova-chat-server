@@ -1,7 +1,7 @@
 const Message = require("../Models/Message");
 module.exports = (io) => {
     io.on("connection", (socket) => {
-        console.log("اتصال جدید:", socket.user);      
+        console.log("اتصال جدید:", socket.id);      
         socket.on("chat message", async (data) => {
             if (!socket.user) return;
             const msg = new Message({

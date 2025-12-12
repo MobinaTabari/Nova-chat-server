@@ -1,13 +1,16 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
-const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
-
+app.use(cors({
+    origin: ["http://localhost:5173", "http://localhost:3000"], 
+    methods: ["GET", "POST"],
+}));
 const io = new Server(server, {
     cors: {
         origin: ["http://localhost:3000", "http://localhost:5173"], 
@@ -15,6 +18,10 @@ const io = new Server(server, {
         credentials: true,
     },
 });
+
+
+
+app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))
@@ -32,8 +39,13 @@ const MessageSchema = new mongoose.Schema({
 const Message = mongoose.model("Message", MessageSchema);
 
 app.get("/messages", async (req, res) => {
-  const messages = await Message.find({});
-  res.json(messages);
+    try {
+        const messages = await Message.find({});
+        res.json(messages);
+    } catch (err) {
+        console.error("Error fetching messages:", err);
+        res.status(500).json({ error: "Server error" });
+    }
 });
 
 io.on("connection", (socket) => {
